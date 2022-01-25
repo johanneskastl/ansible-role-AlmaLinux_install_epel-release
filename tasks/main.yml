@@ -1,0 +1,18 @@
+---
+
+- name: 'AlmaLinux - install package epel-release'
+  yum:
+    name: 'epel-release'
+    state: 'present'
+  when: 'ansible_distribution == "AlmaLinux"'
+  notify:
+    - "run 'dnf makecache'"
+
+- name: 'AlmaLinux - install epel-release key'
+  rpm_key:
+    key: '/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}'
+    state: 'present'
+  when: 'ansible_distribution == "AlmaLinux"'
+  ignore_errors: "{{ ansible_check_mode |default(false)}}"
+
+- meta: flush_handlers
