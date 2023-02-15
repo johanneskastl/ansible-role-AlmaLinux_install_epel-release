@@ -1,7 +1,7 @@
 ---
 
 - name: 'AlmaLinux - install package epel-release'
-  yum:
+  ansible.builtin.package:
     name: 'epel-release'
     state: 'present'
   when: 'ansible_distribution == "AlmaLinux"'
