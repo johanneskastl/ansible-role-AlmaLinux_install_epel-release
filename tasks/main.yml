@@ -15,4 +15,5 @@
   when: 'ansible_distribution == "AlmaLinux"'
   ignore_errors: "{{ ansible_check_mode |default(false)}}"
 
-- meta: flush_handlers
+- name: 'Flush handlers'
+  ansible.builtin.meta: flush_handlers
