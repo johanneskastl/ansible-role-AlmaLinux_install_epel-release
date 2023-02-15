@@ -9,7 +9,7 @@
     - "run 'dnf makecache'"
 
 - name: 'AlmaLinux - install epel-release key'
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: '/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}'
     state: 'present'
   when: 'ansible_distribution == "AlmaLinux"'
