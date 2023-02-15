@@ -8,7 +8,7 @@
     - 'ansible_distribution == "AlmaLinux"'
   notify:
     - 'AlmaLinux - install epel-release key'
-    - "run 'dnf makecache'"
+    - "Run 'dnf makecache'"
 
 - name: 'Flush handlers'
   ansible.builtin.meta: flush_handlers
