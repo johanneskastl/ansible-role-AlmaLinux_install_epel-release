@@ -4,7 +4,8 @@
   ansible.builtin.package:
     name: 'epel-release'
     state: 'present'
-  when: 'ansible_distribution == "AlmaLinux"'
+  when:
+    - 'ansible_distribution == "AlmaLinux"'
   notify:
     - 'AlmaLinux - install epel-release key'
     - "run 'dnf makecache'"
