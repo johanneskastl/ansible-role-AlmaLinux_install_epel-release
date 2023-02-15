@@ -8,6 +8,7 @@
   when:
     - 'ansible_distribution == "AlmaLinux"'
 
-- ansible.builtin.name: "run 'dnf makecache'"
-  command: "dnf makecache"
-  when: 'ansible_distribution == "AlmaLinux"'
+- name: "run 'dnf makecache'"
+  ansible.builtin.command: "dnf makecache"
+  when:
+    - 'ansible_distribution == "AlmaLinux"'
