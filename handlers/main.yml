@@ -1,6 +1,13 @@
 ---
 # AlmaLinux_install_epel-release/handlers/main.yml
 
-- name: "run 'dnf makecache'"
+- name: 'AlmaLinux - install epel-release key'
+  ansible.builtin.rpm_key:
+    key: '/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}'
+    state: 'present'
+  when:
+    - 'ansible_distribution == "AlmaLinux"'
+
+- ansible.builtin.name: "run 'dnf makecache'"
   command: "dnf makecache"
   when: 'ansible_distribution == "AlmaLinux"'

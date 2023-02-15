@@ -6,14 +6,8 @@
     state: 'present'
   when: 'ansible_distribution == "AlmaLinux"'
   notify:
+    - 'AlmaLinux - install epel-release key'
     - "run 'dnf makecache'"
-
-- name: 'AlmaLinux - install epel-release key'
-  ansible.builtin.rpm_key:
-    key: '/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}'
-    state: 'present'
-  when: 'ansible_distribution == "AlmaLinux"'
-  ignore_errors: "{{ ansible_check_mode |default(false)}}"
 
 - name: 'Flush handlers'
   ansible.builtin.meta: flush_handlers
